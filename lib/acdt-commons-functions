@@ -95,16 +95,16 @@ load_project_configuration(){
        exit 1;
      fi
      temp_file=/tmp/$project-project.conf
-     #cat $conf_file | dos2unix | sed -re "s/'//g" | sed -e 's/"//g' | sed -re 's/=(.*)/="\1"/g'  > $temp_file
-     cat $conf_file | dos2unix | sed -e 's/"//g' | sed -re 's/=(.*)/="\1"/g'  > $temp_file
+     #cat $conf_file | fromdos | sed -re "s/'//g" | sed -e 's/"//g' | sed -re 's/=(.*)/="\1"/g'  > $temp_file
+     cat $conf_file | fromdos | sed -e 's/"//g' | sed -re 's/=(.*)/="\1"/g'  > $temp_file
      source $temp_file
      rm $temp_file
 
      # Define list of properties keys
-     properties_keys=$(cat $acdt_project_template | dos2unix | sed '/^#/d' | sed '/^$/d' | cut -d"=" -f1 )
+     properties_keys=$(cat $acdt_project_template | fromdos | sed '/^#/d' | sed '/^$/d' | cut -d"=" -f1 )
      # Define map of properties
-     properties_map=$(cat $conf_file | dos2unix | sed '/^#/d' | sed '/^$/d' | sed -e 's/"//g' | sed -re 's/(.*)=(.*)/\1=\2\n/g' )
-     #properties_map=$(cat $conf_file | dos2unix | sed '/^#/d' | sed '/^$/d' | sed -re "s/'//g" | sed -e 's/"//g' | sed -re 's/(.*)=(.*)/\1=\2\n/g' )
+     properties_map=$(cat $conf_file | fromdos | sed '/^#/d' | sed '/^$/d' | sed -e 's/"//g' | sed -re 's/(.*)=(.*)/\1=\2\n/g' )
+     #properties_map=$(cat $conf_file | fromdos | sed '/^#/d' | sed '/^$/d' | sed -re "s/'//g" | sed -e 's/"//g' | sed -re 's/(.*)=(.*)/\1=\2\n/g' )
 
      # Get all properties and export them
      export components=$(eval_property "components" )

@@ -123,7 +123,7 @@ load_rollback_file(){
      return 1
    fi
    temp_file=/tmp/rollback.txt
-   cat $acdt_rollback_file | dos2unix | sed -re "s/'//g" | sed -e 's/"//g' | sed -re 's/=(.*)/="\1"/g'  > $temp_file
+   cat $acdt_rollback_file | fromdos | sed -re "s/'//g" | sed -e 's/"//g' | sed -re 's/=(.*)/="\1"/g'  > $temp_file
    source $temp_file
    rm $temp_file
 }

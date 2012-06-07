@@ -18,7 +18,7 @@ ACDT is composed of 3 scripts :
  You can use the script build.sh to build acdt as debian package.
  After checkout project on unix system :
     - change right on build.sh : chmod +x build.sh
-    - change file in unix format if necessary : dos2unix build.sh
+    - change file in unix format if necessary : fromdos build.sh
     - execute build.sh : ./build.sh  
 
  * Install on Debian system
